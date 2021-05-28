@@ -84,7 +84,7 @@ class LandingPage extends React.Component{
     
     render(){
         return(
-            <div>
+            <div style={{backgroundColor:'#d5dbb3',height:'100vh'}}>
                 <div className="container px-5 py-5">
                     <div className="row">
                         <div className="col-6">
@@ -106,24 +106,25 @@ class LandingPage extends React.Component{
                                 this.state.data.map((value, index) => {
                                     return(
                                         <div className='col-4'>
-                                            {/* Cardnya */}
-                                            <div className="row card px-3 py-3" style={{width: '18rem', position: 'absolute'}}>
-                                                {/* Image Card Utama */}
-                                                <img src={this.state.mainImage[index].image} className="card-img-top" sytle={{width: 300, height:240}}/>
+                                            {/* whole card*/}
+                                            <div className="row card px-3 py-3" style={{width: '18rem', position: 'absolute',backgroundColor:'#f0ebcc',borderRadius:'25px'}}>
+                                                {/* main image */}
+                                                <img src={this.state.mainImage[index].image} className="card-img-top" sytle={{width: 300, height:240,borderRadius:'10px'}}/>
                                                 <div className="row justify-content-center">
-                                                    <input type="button" value="Edit Image" onClick={() => this.setState({modalOpen: true, idImage: this.state.mainImage[index].image_id})} className="btn btn-warning" style={{position: 'relative', bottom: '50px', width: '100px', opacity: 0.9}} />
+                                                    <input type="button" value="Edit Image" onClick={() => this.setState({modalOpen: true, idImage: this.state.mainImage[index].image_id})} className="btn btn-outline-dark" style={{position: 'relative', bottom: '50px', width: '100px', opacity: 0.9}} />
                                                 </div>
                                                 <div className='row mt-2'>
-                                                    {/* Image card yang kecil kecil */}
+                                                    {/* 3 image*/}
                                                     {
                                                         value.images.map((val, idx) => {
                                                             return(
                                                                 <div className ='col-4'>
-                                                                    <img src={val.image} className="card-img-top" sytle={{width: 300, height:240}} 
+                                                                    <img src={val.image} className="card-img-top" sytle={{width: 300, height:240,borderRadius:'5px'}} 
                                                                         onClick = {() => {
                                                                             let imageSelected = this.state.mainImage
                                                                             imageSelected[index] = val
                                                                             this.setState({mainImage: imageSelected})
+                                                                            console.log(val.image)
                                                                         }}
                                                                     />
                                                                 </div>
@@ -131,19 +132,15 @@ class LandingPage extends React.Component{
                                                         })
                                                     }
                                                 </div>
-                                                {/* Detail Produk */}
+                                                {/* Info Product */}
                                                 <div className="card-body">
-                                                    <div className='d-flex justify-content-between'>
-                                                        <h5 className="card-title">Brand</h5>
-                                                        <h5 className="card-title">Rp1000000</h5>
-                                                    </div>
-                                                    <h6 className="card-title mt-n2">Name</h6>
-                                                    <p className="card-title" style={{fontSize: 14}}>10 Stok Tersedia</p>
-                                                    
-
-                                                    
-                                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                    <a href="#" className="btn btn-primary rounded-0 w-100">Detail Product</a>
+                                                    <h3 className="card-title" style={{textAlign:'center'}}>{value.brand}</h3>
+                                                    <h5>Price:</h5>
+                                                    <p className="card-title">Rp{value.price}</p>
+                                                    <h5>Name:</h5>
+                                                    <h6 className="card-title mt-n2">{value.name}</h6>
+                                                    <h5>Stock:</h5>
+                                                    <p className="card-title" style={{fontSize: 14}}>{value.stock} units</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -74,7 +74,7 @@ export class AddDataModal extends Component{
     render(){
         return(
             <>
-                <input type="button" value="Add Data" onClick={() => this.setState({modalOpen: true})} className="btn btn-primary rounded-0" />
+                <input type="button" value="Add Data" onClick={() => this.setState({modalOpen: true})} className="btn btn-dark" />
                 <Modal toggle={() => this.setState({modalOpen: false})} isOpen={this.state.modalOpen}>
                     <ModalBody>
                         <div className="text-center">
@@ -105,7 +105,7 @@ export class AddDataModal extends Component{
                             <div className="col-6">
                                 <div>
                                     <input type="file" ref={e => this.files = e} accept="image/*" multiple onChange={this.onImagesValidation} style={{display: 'none'}} />
-                                    <input type="button" value="Choose File" onClick={() => this.files.click()} className="btn btn-warning" />
+                                    <input type="button" value="Choose File" onClick={() => this.files.click()} className="btn btn-outline-dark" />
                                 </div>
                             </div>
                             <div className="col-6">
@@ -128,7 +128,7 @@ export class AddDataModal extends Component{
                             </h6>
                         </div>
                         <div className="my-3">
-                            <input type="button" value="Submit Data" onClick={() => this.onSubmitData()} className="btn btn-primary w-100" />
+                            <input type="button" value="Submit Data" onClick={() => this.onSubmitData()} className="btn btn-dark btn-lg active w-100" />
                         </div>
                     </ModalBody>
                 </Modal>
